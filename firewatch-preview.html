@@ -147,6 +147,158 @@
             background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(15, 23, 42, 0.8), rgba(2, 6, 23, 0.95));
         }
 
+        /* Thermal Gallery */
+        .thermal-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .thermal-card {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            background: #0f172a;
+            border: 2px solid #1e293b;
+            transition: all 0.3s ease;
+        }
+
+        .thermal-card:hover {
+            transform: scale(1.02);
+            border-color: #f97316;
+            box-shadow: 0 20px 40px rgba(249, 115, 22, 0.3);
+        }
+
+        .thermal-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .thermal-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+        }
+
+        .thermal-label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: #fb923c;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        /* Split View */
+        .split-view {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .split-panel {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+            border: 2px solid #1e293b;
+        }
+
+        .split-panel img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .split-label {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            padding: 0.5rem 1rem;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 0.5rem;
+            font-size: 0.875rem;
+            font-weight: 600;
+            backdrop-filter: blur(8px);
+        }
+
+        /* Palette Selector */
+        .palette-selector {
+            display: flex;
+            gap: 0.75rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+
+        .palette-btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            border: 2px solid #334155;
+            background: #0f172a;
+            color: #cbd5e1;
+            font-size: 0.875rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .palette-btn:hover, .palette-btn.active {
+            border-color: #f97316;
+            background: rgba(249, 115, 22, 0.1);
+            color: #fb923c;
+        }
+
+        /* DJI Interface Style */
+        .dji-interface {
+            position: relative;
+            background: #000;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 3px solid #1e293b;
+            margin: 2rem 0;
+        }
+
+        .dji-hud {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+        }
+
+        .hud-element {
+            position: absolute;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #4ade80;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            border: 1px solid #4ade80;
+        }
+
+        /* Feature Grid with Images */
+        .feature-visual {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            margin-bottom: 1.5rem;
+            border: 2px solid #1e293b;
+        }
+
+        .feature-visual img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .hero-content {
             position: relative;
             z-index: 10;
@@ -619,9 +771,101 @@
                 <a href="#solucion" class="btn btn-outline">Conocer la Solución →</a>
             </div>
 
-            <p style="color: #94a3b8; font-size: 0.875rem;">
+            <p style="color: #94a3b8; font-size: 0.875rem; margin-bottom: 3rem;">
                 🇩🇪 Socio tecnológico: <strong style="color: #cbd5e1;">Dronivo (Alemania)</strong>
             </p>
+
+            <!-- Hero Gallery -->
+            <div style="max-width: 64rem; margin: 0 auto;">
+                <p style="text-align: center; color: #60a5fa; font-weight: 600; font-size: 0.875rem; margin-bottom: 1rem;">TECNOLOGÍA EN ACCIÓN</p>
+                <div class="grid grid-3" style="gap: 1rem;">
+                    <div class="thermal-card" style="aspect-ratio: 16/9;">
+                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=600&q=80" alt="Drone patrullando">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">🚁 Patrullaje 24/7</div>
+                        </div>
+                    </div>
+                    <div class="thermal-card" style="aspect-ratio: 16/9;">
+                        <img src="https://images.unsplash.com/photo-1516192518150-0d8fee5425e3?w=600&q=80" alt="Visión térmica">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">🌡️ Detección Térmica</div>
+                        </div>
+                    </div>
+                    <div class="thermal-card" style="aspect-ratio: 16/9;">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80" alt="Control en tiempo real">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">⚡ Control Real-Time</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Thermal Tech Showcase -->
+    <section style="background: linear-gradient(to bottom, #020617, #0f172a);">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">Tecnología de Detección</span>
+                <h2>Visión térmica que <span class="gradient-text">salva vidas</span></h2>
+                <p class="subtitle">Detectamos incendios antes de que sean visibles al ojo humano usando cámaras térmicas de última generación</p>
+            </div>
+
+            <div class="thermal-gallery">
+                <div class="thermal-card">
+                    <img src="https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=800&q=80" alt="Vista térmica de bosque">
+                    <div class="thermal-overlay">
+                        <div class="thermal-label">🔥 Rainbow Palette</div>
+                        <p style="font-size: 0.75rem; color: #cbd5e1; margin-top: 0.25rem;">Alta sensibilidad térmica</p>
+                    </div>
+                </div>
+                <div class="thermal-card">
+                    <img src="https://images.unsplash.com/photo-1516192518150-0d8fee5425e3?w=800&q=80" alt="Detección de puntos calientes">
+                    <div class="thermal-overlay">
+                        <div class="thermal-label">🌡️ Ironbow Palette</div>
+                        <p style="font-size: 0.75rem; color: #cbd5e1; margin-top: 0.25rem;">Contraste optimizado</p>
+                    </div>
+                </div>
+                <div class="thermal-card">
+                    <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=800&q=80" alt="Monitoreo nocturno">
+                    <div class="thermal-overlay">
+                        <div class="thermal-label">❄️ Arctic Palette</div>
+                        <p style="font-size: 0.75rem; color: #cbd5e1; margin-top: 0.25rem;">Operación 24/7</p>
+                    </div>
+                </div>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <h3 style="color: #60a5fa; margin-bottom: 2rem;">Comparación: Visión Normal vs Térmica</h3>
+            </div>
+
+            <div class="split-view">
+                <div class="split-panel">
+                    <img src="https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?w=800&q=80" alt="Vista normal">
+                    <div class="split-label" style="color: #cbd5e1;">📷 Cámara Normal</div>
+                </div>
+                <div class="split-panel" style="border-color: #f97316;">
+                    <img src="https://images.unsplash.com/photo-1526080652727-5b77f74eacd2?w=800&q=80" alt="Vista térmica">
+                    <div class="split-label" style="color: #fb923c;">🌡️ Cámara Térmica</div>
+                </div>
+            </div>
+
+            <div style="max-width: 48rem; margin: 2rem auto; text-align: center;">
+                <p style="font-size: 1.125rem; line-height: 1.75; color: #cbd5e1;">
+                    La cámara térmica detecta diferencias de temperatura de hasta <strong style="color: #f97316;">0.1°C</strong>,
+                    revelando focos de incendio <strong style="color: #f97316;">hasta 2 horas antes</strong> de que sean visibles al ojo humano.
+                </p>
+            </div>
+
+            <div class="palette-selector">
+                <button class="palette-btn active">🌈 Rainbow</button>
+                <button class="palette-btn">🔥 Ironbow</button>
+                <button class="palette-btn">❄️ Arctic</button>
+                <button class="palette-btn">⚫ Blackhot</button>
+                <button class="palette-btn">⚪ Whitehot</button>
+                <button class="palette-btn">🎨 Fulgurite</button>
+                <button class="palette-btn">💎 Hotmetal</button>
+            </div>
         </div>
     </section>
 
@@ -707,6 +951,60 @@
         </div>
     </section>
 
+    <!-- Visual Workflow Section -->
+    <section style="background: linear-gradient(to bottom, #0f172a, #020617);">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">Sistema en Acción</span>
+                <h2>Desde detección hasta <span class="gradient-text">respuesta coordinada</span></h2>
+                <p class="subtitle">El ciclo completo de protección en 4 etapas automatizadas</p>
+            </div>
+
+            <div class="grid grid-2" style="margin-top: 3rem; gap: 3rem;">
+                <div class="card" style="position: relative;">
+                    <div style="position: absolute; top: -1rem; left: -1rem; width: 3rem; height: 3rem; background: #f97316; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; border: 4px solid #020617;">1</div>
+                    <div class="feature-visual" style="height: 250px;">
+                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80" alt="Patrullaje autónomo">
+                    </div>
+                    <h3>🚁 Patrullaje Autónomo</h3>
+                    <p style="color: #cbd5e1;">Drones recorren rutas programadas 24/7, escaneando el terreno con cámaras térmicas de alta resolución.</p>
+                </div>
+
+                <div class="card" style="position: relative;">
+                    <div style="position: absolute; top: -1rem; left: -1rem; width: 3rem; height: 3rem; background: #f97316; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; border: 4px solid #020617;">2</div>
+                    <div class="feature-visual" style="height: 250px;">
+                        <img src="https://images.unsplash.com/photo-1516192518150-0d8fee5425e3?w=800&q=80" alt="Detección térmica">
+                    </div>
+                    <h3>🔥 Detección Instantánea</h3>
+                    <p style="color: #cbd5e1;">IA identifica anomalías térmicas en segundos. Diferencia entre fuegos reales y falsos positivos con 98% precisión.</p>
+                </div>
+
+                <div class="card" style="position: relative;">
+                    <div style="position: absolute; top: -1rem; left: -1rem; width: 3rem; height: 3rem; background: #f97316; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; border: 4px solid #020617;">3</div>
+                    <div class="feature-visual" style="height: 250px;">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Alerta automática">
+                    </div>
+                    <h3>⚡ Alerta Inmediata</h3>
+                    <p style="color: #cbd5e1;">Sistema notifica a CONAF, SENAPRED y brigadas locales con coordenadas GPS exactas en menos de 10 segundos.</p>
+                </div>
+
+                <div class="card" style="position: relative;">
+                    <div style="position: absolute; top: -1rem; left: -1rem; width: 3rem; height: 3rem; background: #f97316; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.25rem; border: 4px solid #020617;">4</div>
+                    <div class="feature-visual" style="height: 250px;">
+                        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80" alt="Respuesta coordinada">
+                    </div>
+                    <h3>🚒 Respuesta Coordinada</h3>
+                    <p style="color: #cbd5e1;">Drones de respuesta despliegan retardante mientras equipos terrestres se dirigen al punto. Monitoreo continuo de evolución.</p>
+                </div>
+            </div>
+
+            <div class="highlight-box" style="margin-top: 3rem; background: rgba(59, 130, 246, 0.1); border-color: rgba(59, 130, 246, 0.3);">
+                <h4 style="color: #60a5fa;">⏱️ Tiempo Total: Menos de 5 minutos</h4>
+                <p>Desde la detección del primer indicio térmico hasta la primera respuesta en terreno. Comparado con 30-60 minutos en métodos tradicionales.</p>
+            </div>
+        </div>
+    </section>
+
     <!-- How It Works Section -->
     <section id="proceso">
         <div class="container">
@@ -750,6 +1048,57 @@
         </div>
     </section>
 
+    <!-- DJI-Style Interface Preview -->
+    <section style="background: #000;">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <span class="section-label">Interface de Control</span>
+                <h2 style="color: #f8fafc;">Control total en <span style="color: #4ade80;">tiempo real</span></h2>
+                <p class="subtitle">Interface profesional estilo DJI para monitoreo y control de flotilla de drones</p>
+            </div>
+
+            <div class="dji-interface" style="aspect-ratio: 21/9;">
+                <img src="https://images.unsplash.com/photo-1462206092226-f46025ffe607?w=1920&q=80" alt="DJI Control Interface" style="width: 100%; height: 100%; object-fit: cover;">
+                <div class="dji-hud">
+                    <div class="hud-element" style="top: 1rem; left: 1rem;">
+                        <div style="font-weight: 700; margin-bottom: 0.25rem;">ALTITUDE: 492 ft</div>
+                        <div style="font-size: 0.65rem; color: #94a3b8;">GPS: Active · P-GPS</div>
+                    </div>
+                    <div class="hud-element" style="top: 1rem; right: 1rem;">
+                        <div style="font-weight: 700; color: #f97316;">🔴 FIRE DETECTED</div>
+                        <div style="font-size: 0.65rem; color: #fb923c;">Temp: 572°F · Dist: 1.2km</div>
+                    </div>
+                    <div class="hud-element" style="bottom: 1rem; left: 1rem; color: #60a5fa; border-color: #60a5fa;">
+                        <div>THERMAL MODE: Rainbow</div>
+                        <div style="font-size: 0.65rem;">Resolution: 1080p HD</div>
+                    </div>
+                    <div class="hud-element" style="bottom: 1rem; right: 1rem;">
+                        <div>BATTERY: 87%</div>
+                        <div style="font-size: 0.65rem; color: #94a3b8;">Flight time: 23 min</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-3" style="margin-top: 3rem;">
+                <div class="card" style="background: #0a0a0a; border-color: #1e293b;">
+                    <div style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">📡</div>
+                    <h3 style="text-align: center; color: #4ade80;">Control Remoto</h3>
+                    <p style="text-align: center;">Controla la flotilla desde cualquier ubicación con conexión 4G/5G</p>
+                </div>
+                <div class="card" style="background: #0a0a0a; border-color: #1e293b;">
+                    <div style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">🗺️</div>
+                    <h3 style="text-align: center; color: #60a5fa;">Mapeo en Vivo</h3>
+                    <p style="text-align: center;">Visualiza ubicación exacta de focos sobre mapas satelitales actualizados</p>
+                </div>
+                <div class="card" style="background: #0a0a0a; border-color: #1e293b;">
+                    <div style="font-size: 2.5rem; text-align: center; margin-bottom: 1rem;">⚡</div>
+                    <h3 style="text-align: center; color: #fb923c;">Alertas Instantáneas</h3>
+                    <p style="text-align: center;">Notificaciones push, email y SMS a equipos de emergencia en &lt; 10 segundos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Technology Section -->
     <section id="tecnologia" style="background: linear-gradient(to bottom, #020617, #0f172a, #020617);">
         <div class="container">
@@ -764,50 +1113,148 @@
 
             <div class="grid grid-2">
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80" alt="Drones de Vigilancia" class="tech-image">
-                    <h3>Drones de Vigilancia</h3>
+                    <div class="feature-visual">
+                        <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80" alt="Drones de Vigilancia">
+                    </div>
+                    <h3>🚁 Drones de Vigilancia</h3>
+                    <p style="margin-bottom: 1rem; color: #94a3b8;">Flotilla autónoma con capacidad de detección térmica de última generación</p>
                     <ul class="check-list">
-                        <li>Cámaras térmicas HD</li>
-                        <li>Vuelo autónomo</li>
-                        <li>Operación 24/7</li>
-                        <li>10+ km de cobertura</li>
+                        <li>Cámaras térmicas HD de 640×512px</li>
+                        <li>Vuelo autónomo con IA</li>
+                        <li>Operación 24/7 todo clima</li>
+                        <li>10+ km de cobertura por unidad</li>
+                        <li>Detección de temperatura hasta 0.1°C</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Inteligencia Artificial" class="tech-image">
-                    <h3>Inteligencia Artificial</h3>
+                    <div class="feature-visual">
+                        <img src="https://images.unsplash.com/photo-1655720031554-a929595ffad7?w=800&q=80" alt="Inteligencia Artificial">
+                    </div>
+                    <h3>🤖 Inteligencia Artificial</h3>
+                    <p style="margin-bottom: 1rem; color: #94a3b8;">Modelos de machine learning entrenados específicamente para detección de incendios</p>
                     <ul class="check-list">
-                        <li>Detección en segundos</li>
-                        <li>Análisis predictivo</li>
-                        <li>98% precisión</li>
-                        <li>Aprendizaje continuo</li>
+                        <li>Detección en menos de 5 segundos</li>
+                        <li>Análisis predictivo de propagación</li>
+                        <li>98.5% precisión, &lt;2% falsos positivos</li>
+                        <li>Aprendizaje continuo del entorno</li>
+                        <li>Reconocimiento de patrones de humo</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Centro de Control" class="tech-image">
-                    <h3>Centro de Control</h3>
+                    <div class="feature-visual">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Centro de Control">
+                    </div>
+                    <h3>🖥️ Centro de Control</h3>
+                    <p style="margin-bottom: 1rem; color: #94a3b8;">Dashboard centralizado para gestión de toda la operación</p>
                     <ul class="check-list">
-                        <li>Dashboard tiempo real</li>
-                        <li>Integración CONAF</li>
-                        <li>Alertas multicanal</li>
-                        <li>Reportería automática</li>
+                        <li>Dashboard en tiempo real con mapas</li>
+                        <li>Integración directa con CONAF/SENAPRED</li>
+                        <li>Alertas multicanal (SMS/Email/Push)</li>
+                        <li>Reportería automática y analytics</li>
+                        <li>Histórico de eventos y grabaciones</li>
                     </ul>
                 </div>
                 <div class="card">
-                    <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80" alt="Respuesta con Drones" class="tech-image">
-                    <h3>Respuesta con Drones</h3>
+                    <div class="feature-visual">
+                        <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80" alt="Respuesta con Drones">
+                    </div>
+                    <h3>⚡ Respuesta Rápida</h3>
+                    <p style="margin-bottom: 1rem; color: #94a3b8;">Capacidad de respuesta inmediata con drones especializados</p>
                     <ul class="check-list">
-                        <li>Carga de retardante</li>
-                        <li>Espuma biodegradable</li>
-                        <li>Despliegue &lt; 5 min</li>
-                        <li>Coordinación terrestre</li>
+                        <li>Carga de hasta 20L de retardante</li>
+                        <li>Espuma biodegradable certificada</li>
+                        <li>Despliegue en menos de 5 minutos</li>
+                        <li>Coordinación con equipos terrestres</li>
+                        <li>Contención de focos pequeños</li>
                     </ul>
                 </div>
             </div>
 
-            <p style="text-align: center; color: #94a3b8; font-size: 0.875rem; font-style: italic; margin-top: 3rem;">
-                La configuración exacta se define según cada proyecto
-            </p>
+            <div class="highlight-box" style="margin-top: 3rem;">
+                <h4>🎯 Configuración Personalizada</h4>
+                <p>Cada sistema se diseña según tu terreno específico, condiciones climáticas, cobertura necesaria y sistemas existentes. No vendemos paquetes genéricos.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases with Visuals -->
+    <section style="background: linear-gradient(to bottom, #020617, #0f172a);">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">Casos de Uso</span>
+                <h2>Tecnología probada en <span class="gradient-text">escenarios reales</span></h2>
+                <p class="subtitle">Múltiples paletas térmicas para diferentes condiciones y objetivos de detección</p>
+            </div>
+
+            <div class="grid grid-2" style="margin-top: 3rem;">
+                <div class="card" style="background: #0a0a0a;">
+                    <div class="thermal-card">
+                        <img src="https://images.unsplash.com/photo-1604537466573-5e94508fd243?w=800&q=80" alt="Detección diurna">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">☀️ Detección Diurna</div>
+                        </div>
+                    </div>
+                    <h3 style="margin-top: 1.5rem;">Monitoreo Durante el Día</h3>
+                    <p>Paleta Rainbow para máxima sensibilidad térmica. Identifica puntos calientes incluso con alta radiación solar.</p>
+                </div>
+                <div class="card" style="background: #0a0a0a;">
+                    <div class="thermal-card">
+                        <img src="https://images.unsplash.com/photo-1519710164239-da123dc03ef4?w=800&q=80" alt="Detección nocturna">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">🌙 Detección Nocturna</div>
+                        </div>
+                    </div>
+                    <h3 style="margin-top: 1.5rem;">Vigilancia 24/7</h3>
+                    <p>Paleta Whitehot optimizada para operación nocturna. Visibilidad total sin importar la luz ambiental.</p>
+                </div>
+                <div class="card" style="background: #0a0a0a;">
+                    <div class="thermal-card">
+                        <img src="https://images.unsplash.com/photo-1603022878716-e516d4158562?w=800&q=80" alt="Penetración de humo">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">💨 Penetración de Humo</div>
+                        </div>
+                    </div>
+                    <h3 style="margin-top: 1.5rem;">Visión a Través del Humo</h3>
+                    <p>La cámara térmica penetra el humo denso para revelar focos ocultos y zonas de propagación.</p>
+                </div>
+                <div class="card" style="background: #0a0a0a;">
+                    <div class="thermal-card">
+                        <img src="https://images.unsplash.com/photo-1527482937786-6608eea10660?w=800&q=80" alt="Análisis predictivo">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">📊 Análisis Predictivo</div>
+                        </div>
+                    </div>
+                    <h3 style="margin-top: 1.5rem;">Predicción de Propagación</h3>
+                    <p>IA analiza patrones térmicos para predecir dirección y velocidad de propagación del fuego.</p>
+                </div>
+            </div>
+
+            <div style="margin-top: 4rem;">
+                <h3 style="text-align: center; color: #60a5fa; margin-bottom: 2rem;">Ejemplo de Múltiples Paletas</h3>
+                <div class="grid grid-3">
+                    <div class="thermal-card">
+                        <img src="https://images.unsplash.com/photo-1516192518150-0d8fee5425e3?w=600&q=80" alt="Rainbow palette">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">🌈 Rainbow</div>
+                        </div>
+                    </div>
+                    <div class="thermal-card">
+                        <img src="https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=600&q=80" alt="Ironbow palette">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">🔥 Ironbow</div>
+                        </div>
+                    </div>
+                    <div class="thermal-card">
+                        <img src="https://images.unsplash.com/photo-1473445730015-841f29a9490b?w=600&q=80" alt="Arctic palette">
+                        <div class="thermal-overlay">
+                            <div class="thermal-label">❄️ Arctic</div>
+                        </div>
+                    </div>
+                </div>
+                <p style="text-align: center; margin-top: 2rem; color: #94a3b8;">
+                    Los operadores pueden cambiar entre paletas en tiempo real según las condiciones del terreno
+                </p>
+            </div>
         </div>
     </section>
 
