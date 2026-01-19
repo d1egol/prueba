@@ -1,0 +1,53 @@
+==========================================
+  GUÍA: SUBIR TUS 4 IMÁGENES TÉRMICAS
+==========================================
+
+Por favor, sube las 4 imágenes que compartiste a esta carpeta con estos nombres exactos:
+
+📁 Ubicación: /home/user/prueba/assets/images/thermal/
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+IMAGEN 1: dji-interface-split.jpg
+├─ Descripción: Captura del interface DJI con split view
+├─ Muestra: Vista térmica (izq.) + Vista normal (der.)
+├─ Detalles: Altitude 492 ft, Zoom 10.0x, controles visibles
+└─ Uso: HERO principal de la landing page
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+IMAGEN 2: thermal-4-views.jpg
+├─ Descripción: Grid con 4 vistas térmicas diferentes
+├─ Muestra: 4 paletas (Rainbow, Blackhot, etc.)
+├─ Detalles: Comparación de paletas en mismo edificio
+└─ Uso: Sección de capacidades térmicas
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+IMAGEN 3: drones-forest-fire.jpg
+├─ Descripción: Drones operando sobre incendio
+├─ Muestra: 2-3 drones volando sobre fuego activo
+├─ Detalles: Humo, llamas visibles, operación real
+└─ Uso: Sección de respuesta rápida
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+IMAGEN 4: thermal-mountain-wide.jpg
+├─ Descripción: Vista térmica panorámica de montañas
+├─ Muestra: Gradientes térmicos azul→amarillo→naranja
+├─ Detalles: Área extensa, detección de zonas calientes
+└─ Uso: Sección de cobertura de gran alcance
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+INSTRUCCIONES:
+1. Guarda cada imagen con el nombre exacto indicado arriba
+2. Colócalas en: /home/user/prueba/assets/images/thermal/
+3. Formato recomendado: JPG (PNG también funciona)
+4. Resolución mínima: 1920x1080px
+5. Peso máximo: 2MB por imagen
+
+COMANDO PARA VERIFICAR:
+  ls -lh assets/images/thermal/*.jpg
+
+Una vez subidas, la landing page las mostrará automáticamente.
