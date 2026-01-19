@@ -1,0 +1,1086 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FireWatch Chile | Monitoreo de Incendios Forestales con Drones</title>
+    <meta name="description" content="Sistema de detección y respuesta temprana a incendios forestales con drones autónomos e IA. Proyectos a medida para empresas forestales, gobierno y agroindustria en Chile.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #020617;
+            color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: transparent;
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(15, 23, 42, 0.9);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .navbar-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 1.25rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .logo-icon {
+            color: #f97316;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #cbd5e1;
+            text-decoration: none;
+            font-size: 0.875rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: #3b82f6;
+        }
+
+        .btn {
+            padding: 0.5rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            border: none;
+        }
+
+        .btn-primary {
+            background: #f97316;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ea580c;
+            transform: scale(1.02);
+        }
+
+        .btn-outline {
+            border: 2px solid #334155;
+            color: #f1f5f9;
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            border-color: #3b82f6;
+            color: #3b82f6;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, rgba(2, 6, 23, 0.95), rgba(15, 23, 42, 0.8), rgba(2, 6, 23, 0.95));
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 8rem 2rem;
+            text-align: center;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            background: rgba(59, 130, 246, 0.1);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            color: #60a5fa;
+            font-size: 0.875rem;
+            margin-bottom: 2rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .gradient-text {
+            background: linear-gradient(to right, #fb923c, #4ade80);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: #cbd5e1;
+            max-width: 48rem;
+            margin: 0 auto 3rem;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            max-width: 64rem;
+            margin: 0 auto 3rem;
+        }
+
+        .stat-card {
+            background: rgba(15, 23, 42, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid #1e293b;
+            border-radius: 1rem;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #f97316;
+            font-family: 'Courier New', monospace;
+        }
+
+        .stat-label {
+            color: #94a3b8;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+        }
+
+        .cta-group {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 3rem;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 6rem 2rem;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-weight: 700;
+            color: #f97316;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        }
+
+        .card {
+            background: rgba(30, 41, 59, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #3b82f6;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+        }
+
+        .icon-circle {
+            width: 4rem;
+            height: 4rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+        }
+
+        .icon-primary {
+            background: rgba(59, 130, 246, 0.1);
+            border: 2px solid rgba(59, 130, 246, 0.3);
+        }
+
+        .icon-accent {
+            background: rgba(249, 115, 22, 0.1);
+            border: 2px solid rgba(249, 115, 22, 0.3);
+        }
+
+        .icon-forest {
+            background: rgba(34, 197, 94, 0.1);
+            border: 2px solid rgba(34, 197, 94, 0.3);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #60a5fa;
+        }
+
+        p {
+            color: #cbd5e1;
+            line-height: 1.75;
+        }
+
+        /* Quote Box */
+        .quote-box {
+            background: rgba(15, 23, 42, 0.5);
+            border-left: 4px solid #f97316;
+            border-radius: 0.5rem;
+            padding: 2rem;
+            max-width: 48rem;
+            margin: 3rem auto;
+        }
+
+        .quote-box p {
+            font-style: italic;
+            font-size: 1.125rem;
+            margin-bottom: 1rem;
+        }
+
+        .quote-author {
+            font-size: 0.875rem;
+            color: #94a3b8;
+        }
+
+        /* Contact Form */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #cbd5e1;
+            margin-bottom: 0.5rem;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 0.5rem;
+            color: #f1f5f9;
+            font-family: inherit;
+            transition: all 0.2s;
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: #020617;
+            border-top: 1px solid #1e293b;
+            padding: 3rem 2rem;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            text-decoration: none;
+            font-size: 0.875rem;
+        }
+
+        .footer-links a:hover {
+            color: #3b82f6;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1280px;
+            margin: 2rem auto 0;
+            padding-top: 2rem;
+            border-top: 1px solid #1e293b;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .copyright {
+            color: #64748b;
+            font-size: 0.875rem;
+        }
+
+        /* Floating CTA */
+        .floating-cta {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            z-index: 999;
+            background: #f97316;
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 9999px;
+            box-shadow: 0 10px 40px rgba(249, 115, 22, 0.3);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: none;
+        }
+
+        .floating-cta.visible {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .floating-cta:hover {
+            transform: scale(1.1);
+            box-shadow: 0 20px 50px rgba(249, 115, 22, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: rgba(249, 115, 22, 0.1);
+            border: 1px solid rgba(249, 115, 22, 0.3);
+            border-radius: 1rem;
+            padding: 2rem;
+            margin: 3rem auto;
+            max-width: 56rem;
+        }
+
+        .highlight-box h4 {
+            color: #fb923c;
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        /* FAQ */
+        .faq-item {
+            background: rgba(30, 41, 59, 0.5);
+            border: 1px solid #334155;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            border-color: #3b82f6;
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.125rem;
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding-top: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding-top: 1rem;
+            border-top: 1px solid #334155;
+            margin-top: 1rem;
+        }
+
+        .tech-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 1rem 1rem 0 0;
+            margin: -2rem -2rem 1.5rem -2rem;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+
+        .check-list li {
+            padding-left: 2rem;
+            position: relative;
+            margin-bottom: 0.75rem;
+        }
+
+        .check-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #22c55e;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar" id="navbar">
+        <div class="navbar-container">
+            <div class="logo" onclick="window.scrollTo({top: 0, behavior: 'smooth'})">
+                <span class="logo-icon">🔥</span>
+                <span>FIREWATCH</span>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#problema">El Problema</a></li>
+                <li><a href="#solucion">Solución</a></li>
+                <li><a href="#tecnologia">Tecnología</a></li>
+                <li><a href="#proceso">Proceso</a></li>
+                <li><a href="#faq">FAQ</a></li>
+            </ul>
+            <a href="#contacto" class="btn btn-primary">📅 Agendar Reunión</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="eyebrow">
+                <span>🇩🇪</span>
+                <span>Tecnología alemana · Soluciones a medida para Chile</span>
+            </div>
+
+            <h1>
+                Protegemos los bosques de Chile<br>
+                <span class="gradient-text">antes de que sea tarde</span>
+            </h1>
+
+            <p class="subtitle">
+                Sistema de detección y respuesta temprana a incendios forestales con drones autónomos e inteligencia artificial. Proyectos diseñados a medida para tu operación.
+            </p>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">132</div>
+                    <div class="stat-label">vidas perdidas en Valparaíso 2024</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">5,500ha</div>
+                    <div class="stat-label">quemadas en solo 2 horas</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">&lt;5min</div>
+                    <div class="stat-label">alerta temprana posible</div>
+                </div>
+            </div>
+
+            <div class="cta-group">
+                <a href="#contacto" class="btn btn-primary">📅 Agendar Reunión Estratégica</a>
+                <a href="#solucion" class="btn btn-outline">Conocer la Solución →</a>
+            </div>
+
+            <p style="color: #94a3b8; font-size: 0.875rem;">
+                🇩🇪 Socio tecnológico: <strong style="color: #cbd5e1;">Dronivo (Alemania)</strong>
+            </p>
+        </div>
+    </section>
+
+    <!-- Crisis Section -->
+    <section id="problema">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">El Problema</span>
+                <h2>Chile enfrenta una crisis <span style="color: #ef4444;">que escala</span> cada temporada</h2>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="stat-number">428,343ha</div>
+                    <p class="stat-label">hectáreas quemadas en temporada 2022-2023</p>
+                </div>
+                <div class="card">
+                    <div class="stat-number">64%</div>
+                    <p class="stat-label">de incendios causados por negligencia humana</p>
+                </div>
+                <div class="card">
+                    <div class="stat-number">2 hrs</div>
+                    <p class="stat-label">bastaron para quemar 5,500 hectáreas en Valparaíso</p>
+                </div>
+                <div class="card">
+                    <div class="stat-number">1,000+</div>
+                    <p class="stat-label">años: la megasequía más larga registrada (ONU)</p>
+                </div>
+            </div>
+
+            <p style="max-width: 56rem; margin: 3rem auto; text-align: center; font-size: 1.125rem;">
+                La interfaz urbano-forestal crece. El cambio climático intensifica las condiciones. La detección tardía convierte focos manejables en megaincendios. El tiempo entre la ignición y la respuesta determina si perdemos hectáreas o comunidades enteras.
+            </p>
+
+            <div class="quote-box">
+                <p>"La combinación de vientos y calor hizo que se quemaran más de 5,500 hectáreas en solo 2 horas en Valparaíso"</p>
+                <p class="quote-author">— SENAPRED, Febrero 2024</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Solution Section -->
+    <section id="solucion" style="background: linear-gradient(to bottom, #020617, #0f172a, #020617);">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">La Solución</span>
+                <h2>
+                    <span style="color: #4ade80;">Detectar antes.</span>
+                    <span style="color: #60a5fa;">Responder mejor.</span>
+                </h2>
+                <p class="subtitle">Un sistema integral diseñado específicamente para las condiciones y desafíos de Chile.</p>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="icon-circle icon-primary">👁️</div>
+                    <div style="text-align: center; margin-bottom: 1rem; font-size: 0.875rem; font-weight: 700; color: #94a3b8;">01</div>
+                    <h3 style="text-align: center;">DETECTAR</h3>
+                    <p style="text-align: center;">Drones 24/7 con cámaras térmicas e IA que identifican focos antes de ser visibles</p>
+                </div>
+                <div class="card">
+                    <div class="icon-circle icon-accent">🔔</div>
+                    <div style="text-align: center; margin-bottom: 1rem; font-size: 0.875rem; font-weight: 700; color: #94a3b8;">02</div>
+                    <h3 style="text-align: center; color: #fb923c;">ALERTAR</h3>
+                    <p style="text-align: center;">Notificación instantánea a CONAF, SENAPRED y brigadas locales con ubicación exacta</p>
+                </div>
+                <div class="card">
+                    <div class="icon-circle icon-forest">⚡</div>
+                    <div style="text-align: center; margin-bottom: 1rem; font-size: 0.875rem; font-weight: 700; color: #94a3b8;">03</div>
+                    <h3 style="text-align: center; color: #4ade80;">RESPONDER</h3>
+                    <p style="text-align: center;">Contención inicial con drones de carga mientras llegan los equipos terrestres</p>
+                </div>
+            </div>
+
+            <div class="highlight-box">
+                <h4>⭐ Cada proyecto es diseñado A MEDIDA</h4>
+                <p>Según tu terreno, cobertura necesaria y sistemas existentes. No vendemos productos genéricos.</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#proceso" class="btn btn-primary">Ver cómo funciona →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section id="proceso">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">Cómo Trabajamos</span>
+                <h2>Un proceso consultivo, <span style="color: #60a5fa;">no una venta de producto</span></h2>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card">
+                    <div style="font-size: 4rem; font-weight: 700; color: #334155; margin-bottom: 1rem;">01</div>
+                    <div class="icon-circle icon-primary">💬</div>
+                    <h3>CONVERSAMOS</h3>
+                    <p style="margin-bottom: 1rem;">Entendemos tu operación, terreno y desafíos específicos</p>
+                    <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(51, 65, 85, 0.5); border-radius: 9999px; font-size: 0.875rem; color: #94a3b8;">1-2 semanas</span>
+                </div>
+                <div class="card">
+                    <div style="font-size: 4rem; font-weight: 700; color: #334155; margin-bottom: 1rem;">02</div>
+                    <div class="icon-circle icon-primary">📋</div>
+                    <h3>DISEÑAMOS</h3>
+                    <p style="margin-bottom: 1rem;">Creamos una propuesta técnica y financiera a medida</p>
+                    <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(51, 65, 85, 0.5); border-radius: 9999px; font-size: 0.875rem; color: #94a3b8;">2-4 semanas</span>
+                </div>
+                <div class="card">
+                    <div style="font-size: 4rem; font-weight: 700; color: #334155; margin-bottom: 1rem;">03</div>
+                    <div class="icon-circle icon-primary">🚀</div>
+                    <h3>IMPLEMENTAMOS</h3>
+                    <p style="margin-bottom: 1rem;">Instalamos, configuramos y operamos el sistema contigo</p>
+                    <span style="display: inline-block; padding: 0.25rem 0.75rem; background: rgba(51, 65, 85, 0.5); border-radius: 9999px; font-size: 0.875rem; color: #94a3b8;">4-12 semanas</span>
+                </div>
+            </div>
+
+            <div style="max-width: 42rem; margin: 3rem auto; text-align: center; background: rgba(34, 197, 94, 0.1); border: 1px solid rgba(34, 197, 94, 0.3); border-radius: 1rem; padding: 2rem;">
+                <h4 style="color: #4ade80; margin-bottom: 0.5rem;">🎯 Plazas Limitadas</h4>
+                <p>Aceptamos máximo <strong style="color: #4ade80;">3 proyectos piloto</strong> durante 2026</p>
+            </div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#contacto" class="btn btn-primary">📅 Iniciar Conversación</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Section -->
+    <section id="tecnologia" style="background: linear-gradient(to bottom, #020617, #0f172a, #020617);">
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">Tecnología</span>
+                <h2>Componentes de <span class="gradient-text">clase mundial</span></h2>
+                <div class="eyebrow" style="margin: 2rem auto 3rem;">
+                    <span>🇩🇪</span>
+                    <span>Socio tecnológico: Dronivo (Alemania)</span>
+                </div>
+            </div>
+
+            <div class="grid grid-2">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=800&q=80" alt="Drones de Vigilancia" class="tech-image">
+                    <h3>Drones de Vigilancia</h3>
+                    <ul class="check-list">
+                        <li>Cámaras térmicas HD</li>
+                        <li>Vuelo autónomo</li>
+                        <li>Operación 24/7</li>
+                        <li>10+ km de cobertura</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Inteligencia Artificial" class="tech-image">
+                    <h3>Inteligencia Artificial</h3>
+                    <ul class="check-list">
+                        <li>Detección en segundos</li>
+                        <li>Análisis predictivo</li>
+                        <li>98% precisión</li>
+                        <li>Aprendizaje continuo</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80" alt="Centro de Control" class="tech-image">
+                    <h3>Centro de Control</h3>
+                    <ul class="check-list">
+                        <li>Dashboard tiempo real</li>
+                        <li>Integración CONAF</li>
+                        <li>Alertas multicanal</li>
+                        <li>Reportería automática</li>
+                    </ul>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=800&q=80" alt="Respuesta con Drones" class="tech-image">
+                    <h3>Respuesta con Drones</h3>
+                    <ul class="check-list">
+                        <li>Carga de retardante</li>
+                        <li>Espuma biodegradable</li>
+                        <li>Despliegue &lt; 5 min</li>
+                        <li>Coordinación terrestre</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="text-align: center; color: #94a3b8; font-size: 0.875rem; font-style: italic; margin-top: 3rem;">
+                La configuración exacta se define según cada proyecto
+            </p>
+        </div>
+    </section>
+
+    <!-- Why Now Section -->
+    <section>
+        <div class="container">
+            <div style="text-align: center;">
+                <span class="section-label">Por Qué Ahora</span>
+                <h2>La ventana de oportunidad <span style="color: #4ade80;">está abierta</span></h2>
+            </div>
+
+            <div class="grid grid-3">
+                <div class="card" style="text-align: center;">
+                    <div class="icon-circle icon-primary">📜</div>
+                    <h3>REGULACIÓN</h3>
+                    <div class="stat-number" style="font-size: 2rem; margin: 1rem 0;">2015</div>
+                    <p class="stat-label" style="margin-bottom: 1rem;">DAN 151</p>
+                    <p>Chile fue el primer país LATAM en regular drones (DAN 151, 2015). El marco legal existe.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div class="icon-circle icon-primary">⚡</div>
+                    <h3>TECNOLOGÍA</h3>
+                    <div class="stat-number" style="font-size: 2rem; margin: 1rem 0;">2024</div>
+                    <p class="stat-label" style="margin-bottom: 1rem;">Madurez comercial</p>
+                    <p>La tecnología de drones autónomos alcanzó madurez comercial en 2024.</p>
+                </div>
+                <div class="card" style="text-align: center;">
+                    <div class="icon-circle icon-primary">📈</div>
+                    <h3>MERCADO</h3>
+                    <div class="stat-number" style="font-size: 2rem; margin: 1rem 0;">$22.47B</div>
+                    <p class="stat-label" style="margin-bottom: 1rem;">Mercado 2032</p>
+                    <p>$22.47B será el mercado global de wildfire tech en 2032. CAGR: 12.6%</p>
+                </div>
+            </div>
+
+            <div class="quote-box">
+                <p>"Los drones ofrecen despliegue rápido, penetran el humo con cámaras térmicas para revelar focos ocultos, y optimizan la asignación de recursos durante emergencias."</p>
+                <p class="quote-author">— Unmanned Systems Technology, 2024</p>
+            </div>
+
+            <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-top: 3rem;">
+                <div style="padding: 0.75rem 1.5rem; background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; border-radius: 0.5rem; color: #cbd5e1; font-weight: 500;">Normativa DGAC</div>
+                <div style="padding: 0.75rem 1.5rem; background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; border-radius: 0.5rem; color: #cbd5e1; font-weight: 500;">DAN 151</div>
+                <div style="padding: 0.75rem 1.5rem; background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; border-radius: 0.5rem; color: #cbd5e1; font-weight: 500;">DAN 91</div>
+                <div style="padding: 0.75rem 1.5rem; background: rgba(30, 41, 59, 0.5); border: 1px solid #334155; border-radius: 0.5rem; color: #cbd5e1; font-weight: 500;">Dronivo 🇩🇪</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" style="background: linear-gradient(to bottom, #020617, #0f172a, #020617);">
+        <div class="container" style="max-width: 56rem;">
+            <div style="text-align: center;">
+                <span class="section-label">Preguntas Frecuentes</span>
+                <h2>Lo que probablemente <span style="color: #60a5fa;">te estás preguntando</span></h2>
+            </div>
+
+            <div id="faq-container"></div>
+
+            <div style="text-align: center; margin-top: 3rem;">
+                <p style="margin-bottom: 1.5rem;">¿Tienes otra pregunta?</p>
+                <a href="#contacto" class="btn btn-primary">Conversemos →</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contacto">
+        <div class="container">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2>¿Listo para proteger <span class="gradient-text">lo que importa?</span></h2>
+                <p class="subtitle">Agenda una reunión estratégica. Sin compromiso.</p>
+            </div>
+
+            <div class="form-grid">
+                <div>
+                    <div class="card">
+                        <form id="contact-form">
+                            <div class="form-group">
+                                <label for="name">Nombre *</label>
+                                <input type="text" id="name" required placeholder="Tu nombre completo">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email">Email corporativo *</label>
+                                <input type="email" id="email" required placeholder="tu@empresa.com">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="organization">Organización *</label>
+                                <input type="text" id="organization" required placeholder="Nombre de tu empresa o institución">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="orgType">Tipo de organización *</label>
+                                <select id="orgType" required>
+                                    <option value="">Seleccionar...</option>
+                                    <option value="forestal">Empresa forestal</option>
+                                    <option value="gobierno">Gobierno / CONAF</option>
+                                    <option value="municipalidad">Municipalidad</option>
+                                    <option value="agroindustria">Agroindustria</option>
+                                    <option value="inversionista">Inversionista</option>
+                                    <option value="otro">Otro</option>
+                                </select>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message">Mensaje (opcional)</label>
+                                <textarea id="message" placeholder="Cuéntanos brevemente sobre tu desafío..."></textarea>
+                            </div>
+
+                            <button type="submit" class="btn btn-primary" style="width: 100%;">✉️ Enviar Mensaje</button>
+
+                            <p style="text-align: center; color: #94a3b8; font-size: 0.875rem; margin-top: 1rem;">
+                                Responderemos en máximo 48 horas
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+                <div>
+                    <div style="margin-bottom: 3rem;">
+                        <h3 style="margin-bottom: 2rem;">También puedes escribirnos:</h3>
+
+                        <div style="display: flex; gap: 1rem; margin-bottom: 1.5rem;">
+                            <div style="color: #60a5fa; font-size: 1.5rem;">✉️</div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">Email</p>
+                                <a href="mailto:contacto@firewatch.cl" style="color: #60a5fa; text-decoration: none;">contacto@firewatch.cl</a>
+                            </div>
+                        </div>
+
+                        <div style="display: flex; gap: 1rem;">
+                            <div style="color: #60a5fa; font-size: 1.5rem;">📍</div>
+                            <div>
+                                <p style="font-weight: 500; margin-bottom: 0.25rem;">Ubicación</p>
+                                <p style="color: #94a3b8;">San Antonio, Chile</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid #334155; padding-top: 3rem;"></div>
+
+                    <div class="quote-box">
+                        <p>"Cada proyecto comienza con una conversación. Cuéntanos tu desafío."</p>
+                        <p class="quote-author">— Diego, Fundador</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="logo" style="justify-content: center; margin-bottom: 2rem;">
+                <span class="logo-icon">🔥</span>
+                <span>FIREWATCH</span>
+            </div>
+
+            <div class="footer-links">
+                <a href="#problema">El Problema</a>
+                <a href="#solucion">Solución</a>
+                <a href="#tecnologia">Tecnología</a>
+                <a href="#proceso">Proceso</a>
+                <a href="#faq">FAQ</a>
+            </div>
+
+            <div class="footer-bottom">
+                <p class="copyright">© 2026 FireWatch Chile. Todos los derechos reservados.</p>
+                <div style="display: flex; align-items: center; gap: 1.5rem;">
+                    <a href="https://www.linkedin.com" target="_blank" style="color: #94a3b8; font-size: 1.5rem; text-decoration: none;">💼</a>
+                    <span style="color: #94a3b8; font-size: 0.875rem;">
+                        🇩🇪 Socio tecnológico: <strong style="color: #cbd5e1;">Dronivo</strong>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating CTA -->
+    <div class="floating-cta" id="floatingCta" onclick="document.getElementById('contacto').scrollIntoView({behavior: 'smooth'})">
+        📅 <span>Agendar</span>
+    </div>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            const floatingCta = document.getElementById('floatingCta');
+
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+
+            if (window.scrollY > 500) {
+                floatingCta.classList.add('visible');
+            } else {
+                floatingCta.classList.remove('visible');
+            }
+        });
+
+        // FAQ Accordion
+        const faqs = [
+            {
+                question: '¿Cuánto cuesta un proyecto?',
+                answer: 'Cada proyecto es único. Depende de la cobertura, terreno y nivel de integración necesarios. En la reunión inicial podemos darte un rango estimado basado en tus requerimientos específicos. Los proyectos típicamente van desde $200K a $1M+ USD, incluyendo hardware, software, instalación y servicio mensual.'
+            },
+            {
+                question: '¿Cumplen con la regulación DGAC?',
+                answer: 'Sí. Diseñamos cada proyecto para cumplir con DAN 151 (operación de drones) y DAN 91 (operaciones comerciales). Incluimos todo el proceso de permisos y certificaciones como parte del servicio. Nuestro equipo está familiarizado con los requisitos regulatorios chilenos.'
+            },
+            {
+                question: '¿Tienen proyectos funcionando en Chile?',
+                answer: 'Estamos en fase de validación con pilotos iniciales. Nuestro socio tecnológico Dronivo tiene casos de éxito documentados en Europa con tecnología similar que adaptamos al contexto y regulación chilena. Esto nos permite ofrecer tecnología probada con personalización local.'
+            },
+            {
+                question: '¿Se integra con sistemas existentes de CONAF?',
+                answer: 'Sí. Parte del diseño a medida incluye la integración con los sistemas y protocolos que ya utilizas. Podemos conectarnos con sistemas de alerta de CONAF, SENAPRED y otros sistemas de gestión de emergencias. La interoperabilidad es una prioridad en cada proyecto.'
+            },
+            {
+                question: '¿Cuánto tiempo toma implementar?',
+                answer: 'Desde la firma del contrato hasta operación completa: típicamente 2-4 meses. Esto incluye diseño final, adquisición de permisos, instalación de hardware, configuración de software, entrenamiento del equipo y pruebas en campo. El tiempo exacto depende de la complejidad y los permisos regulatorios necesarios.'
+            }
+        ];
+
+        const faqContainer = document.getElementById('faq-container');
+        faqs.forEach((faq, index) => {
+            const faqItem = document.createElement('div');
+            faqItem.className = 'faq-item';
+            faqItem.innerHTML = `
+                <div class="faq-question">
+                    <span>${faq.question}</span>
+                    <span style="font-size: 1.5rem; transition: transform 0.3s;">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>${faq.answer}</p>
+                </div>
+            `;
+
+            faqItem.addEventListener('click', () => {
+                const wasActive = faqItem.classList.contains('active');
+                document.querySelectorAll('.faq-item').forEach(item => item.classList.remove('active'));
+                if (!wasActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+
+            faqContainer.appendChild(faqItem);
+        });
+
+        // Form submission
+        document.getElementById('contact-form').addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('¡Gracias por tu interés! En una implementación real, este formulario enviaría los datos a un servidor. Por ahora, puedes revisar el diseño y funcionalidad.');
+            e.target.reset();
+        });
+
+        // Smooth scroll for all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
