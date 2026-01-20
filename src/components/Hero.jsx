@@ -9,15 +9,15 @@ const Hero = () => {
 
   const heroGallery = [
     {
-      src: 'https://images.unsplash.com/photo-1508614589041-895b88991e3e?w=600&q=80',
+      src: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&q=80',
       label: '🚁 Patrullaje 24/7',
     },
     {
-      src: 'https://images.unsplash.com/photo-1516192518150-0d8fee5425e3?w=600&q=80',
+      src: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?w=600&q=80',
       label: '🌡️ Detección Térmica',
     },
     {
-      src: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80',
+      src: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&q=80',
       label: '⚡ Control Real-Time',
     },
   ];

@@ -20,7 +20,7 @@ const faqs = [
   },
   {
     question: '¿Cómo se integra con los sistemas de emergencia existentes?',
-    answer: 'FireWatch se integra mediante APIs estándar con sistemas CONAF, centrales de bomberos, y plataformas municipales de emergencia. Podemos enviar alertas directas a WhatsApp, email, SMS, o sistemas de comando ya existentes. La integración típica toma 1-2 semanas.'
+    answer: 'PyroGuard se integra mediante APIs estándar con sistemas CONAF, centrales de bomberos, y plataformas municipales de emergencia. Podemos enviar alertas directas a WhatsApp, email, SMS, o sistemas de comando ya existentes. La integración típica toma 1-2 semanas.'
   },
   {
     question: '¿Qué área puede monitorear el sistema?',
@@ -100,7 +100,7 @@ const FAQ = () => {
             <span className="text-blue-400">te estás preguntando</span>
           </h2>
           <p className="text-xl text-slate-300 mt-6">
-            Respuestas directas a las preguntas más comunes sobre FireWatch.
+            Respuestas directas a las preguntas más comunes sobre PyroGuard.
           </p>
         </motion.div>
 

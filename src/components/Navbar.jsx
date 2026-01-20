@@ -22,7 +22,7 @@ const Navbar = () => {
       <div className="max-w-7xl mx-auto px-4 py-5 flex justify-between items-center">
         <div className="flex items-center gap-2 text-xl font-bold cursor-pointer">
           <span className="text-4xl">🔥</span>
-          <span>FIREWATCH</span>
+          <span>PYROGUARD</span>
         </div>
         <ul className="hidden md:flex gap-8 text-sm font-medium">
           <li>
