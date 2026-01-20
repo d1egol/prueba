@@ -75,6 +75,15 @@ const Hero = () => {
             Ver Servicios
           </a>
         </motion.div>
+
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.4 }}
+          className="text-slate-500 text-xs mt-6"
+        >
+          🇩🇪 Respaldados por <span className="text-slate-400">Dronivo (Alemania)</span>
+        </motion.p>
       </div>
     </section>
   );

@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const faqs = [
   {
     question: '¿Cuánto cuesta el servicio?',
-    answer: 'Ofrecemos planes personalizados según el área a monitorear. Agenda una reunión para recibir una cotización sin compromiso.'
+    answer: 'Planes personalizados según el área. Agenda reunión para cotización sin compromiso.'
   },
   {
     question: '¿Funciona de noche y con mal clima?',
