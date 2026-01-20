@@ -1,59 +1,25 @@
 import { motion } from 'framer-motion';
 
 const Hero = () => {
-  const stats = [
-    { number: '132', label: 'vidas perdidas en Valparaíso 2024' },
-    { number: '5,500ha', label: 'quemadas en solo 2 horas' },
-    { number: '<5min', label: 'alerta temprana posible' },
-  ];
-
-  const heroGallery = [
-    {
-      src: 'https://images.unsplash.com/photo-1473968512647-3e447244af8f?w=600&q=80',
-      label: '🚁 Patrullaje 24/7',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1527576539890-dfa815648363?w=600&q=80',
-      label: '🌡️ Detección Térmica',
-    },
-    {
-      src: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?w=600&q=80',
-      label: '⚡ Control Real-Time',
-    },
-  ];
-
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background */}
+      {/* Background - Drone en acción */}
       <div
         className="absolute inset-0 bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=1920&q=80')",
-        }}
+        style={{ backgroundImage: "url('/images/drone-fire.jpg')" }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/95 via-slate-900/80 to-slate-950/95" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-950/80 via-slate-900/70 to-slate-950/90" />
 
       {/* Content */}
-      <div className="relative z-10 max-w-7xl mx-auto px-4 py-32 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm mb-8"
-        >
-          <span>🇩🇪</span>
-          <span>Tecnología alemana · Soluciones a medida para Chile</span>
-        </motion.div>
-
+      <div className="relative z-10 max-w-5xl mx-auto px-4 py-24 text-center">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
           className="text-4xl md:text-6xl font-bold leading-tight mb-6"
         >
-          Protegemos los bosques de Chile
+          Detectamos incendios
           <br />
-          <span className="bg-gradient-to-r from-orange-400 to-green-400 bg-clip-text text-transparent">
+          <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
             antes de que sea tarde
           </span>
         </motion.h1>
@@ -61,88 +27,53 @@ const Hero = () => {
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="text-xl text-slate-300 max-w-3xl mx-auto mb-12"
+          transition={{ delay: 0.1 }}
+          className="text-xl text-slate-300 max-w-2xl mx-auto mb-8"
         >
-          Sistema de detección y respuesta temprana a incendios forestales con drones autónomos e
-          inteligencia artificial. Proyectos diseñados a medida para tu operación.
+          Drones autónomos con IA para detección temprana, monitoreo 24/7
+          y despliegue de gel retardante.
         </motion.p>
 
-        {/* Stats */}
+        {/* Stats simples */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2 }}
+          className="flex flex-wrap justify-center gap-8 mb-10"
+        >
+          <div className="text-center">
+            <div className="text-3xl font-bold text-orange-500">&lt;5 min</div>
+            <div className="text-sm text-slate-400">detección</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-blue-400">24/7</div>
+            <div className="text-sm text-slate-400">monitoreo</div>
+          </div>
+          <div className="text-center">
+            <div className="text-3xl font-bold text-green-400">100%</div>
+            <div className="text-sm text-slate-400">autónomo</div>
+          </div>
+        </motion.div>
+
+        {/* CTA principal */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto mb-12"
-        >
-          {stats.map((stat, index) => (
-            <div
-              key={index}
-              className="bg-slate-900/50 backdrop-blur-sm border border-slate-800 rounded-xl p-6"
-            >
-              <div className="text-4xl font-bold text-orange-500 font-mono mb-2">
-                {stat.number}
-              </div>
-              <div className="text-sm text-slate-400">{stat.label}</div>
-            </div>
-          ))}
-        </motion.div>
-
-        {/* CTAs */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="flex flex-wrap gap-4 justify-center mb-8"
+          className="flex flex-wrap gap-4 justify-center"
         >
           <a
             href="#contacto"
-            className="px-8 py-3 bg-orange-500 hover:bg-orange-600 rounded-lg font-medium transition-all hover:scale-105"
+            className="px-8 py-4 bg-orange-500 hover:bg-orange-600 rounded-lg font-bold text-lg transition-all hover:scale-105"
           >
-            📅 Agendar Reunión Estratégica
+            Solicitar Demo
           </a>
           <a
-            href="#solucion"
-            className="px-8 py-3 border-2 border-slate-700 hover:border-blue-400 hover:text-blue-400 rounded-lg font-medium transition-all"
+            href="#servicios"
+            className="px-8 py-4 border-2 border-slate-600 hover:border-orange-500 rounded-lg font-medium transition-all"
           >
-            Conocer la Solución →
+            Ver Servicios
           </a>
-        </motion.div>
-
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="text-sm text-slate-400 mb-12"
-        >
-          🇩🇪 Socio tecnológico: <strong className="text-slate-300">Dronivo (Alemania)</strong>
-        </motion.p>
-
-        {/* Hero Gallery */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="max-w-4xl mx-auto"
-        >
-          <p className="text-center text-blue-400 font-semibold text-sm mb-4">
-            TECNOLOGÍA EN ACCIÓN
-          </p>
-          <div className="grid md:grid-cols-3 gap-4">
-            {heroGallery.map((item, index) => (
-              <div
-                key={index}
-                className="relative rounded-xl overflow-hidden border-2 border-slate-800 hover:border-orange-500 transition-all duration-300 aspect-video group cursor-pointer"
-              >
-                <img src={item.src} alt={item.label} className="w-full h-full object-cover" />
-                <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
-                  <div className="text-sm font-semibold text-orange-400 uppercase tracking-wide">
-                    {item.label}
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
         </motion.div>
       </div>
     </section>
