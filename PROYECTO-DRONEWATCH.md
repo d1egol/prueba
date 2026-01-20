@@ -1,7 +1,7 @@
-# PyroGuard Chile - Contexto del Proyecto
+# DroneWatch Chile - Contexto del Proyecto
 
 ## Resumen Ejecutivo
-PyroGuard es un servicio de detección y respuesta temprana a incendios forestales usando drones autónomos con cámaras térmicas e inteligencia artificial. Operamos en Chile con tecnología alemana.
+DroneWatch es un servicio de detección y respuesta temprana a incendios forestales usando drones autónomos con cámaras térmicas e inteligencia artificial. Operamos en Chile con tecnología alemana.
 
 ## Propuesta de Valor
 - **Detección en <5 minutos** (vs 3-4 horas del método tradicional)
@@ -40,22 +40,22 @@ PyroGuard es un servicio de detección y respuesta temprana a incendios forestal
 - Parques nacionales
 
 ## Problema que Resolvemos
-### Sin PyroGuard:
+### Sin DroneWatch:
 - Detección: 3-4 horas después del inicio
 - Coordinación: Llamadas fragmentadas entre agencias
 - Evacuación: Reactiva, caótica, tardía
 - Resultado: Megaincendios, vidas perdidas
 
-### Con PyroGuard:
+### Con DroneWatch:
 - Detección: Menos de 5 minutos
 - Coordinación: Panel único, tiempo real
 - Evacuación: Proactiva, ordenada, segura
 - Resultado: Incendios contenidos, vidas salvadas
 
 ## Datos de Contacto
-- **Email:** contacto@pyroguard.cl
+- **Email:** contacto@dronewatch.cl
 - **Ubicación:** San Antonio, Chile
-- **Web:** https://pyroguard.cl
+- **Web:** https://dronewatch.cl
 
 ## Estructura de la Landing Page
 1. **Hero** - Mensaje principal + CTA "Solicitar Demo"

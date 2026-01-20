@@ -87,7 +87,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="mt-8 flex flex-wrap justify-center gap-6 text-slate-400 text-sm"
         >
-          <span>contacto@pyroguard.cl</span>
+          <span>contacto@dronewatch.cl</span>
           <span>•</span>
           <span>San Antonio, Chile</span>
         </motion.div>

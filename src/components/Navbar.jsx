@@ -20,7 +20,7 @@ const Navbar = () => {
       <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
         <a href="#" className="flex items-center gap-2 text-xl font-bold">
           <span className="text-3xl">🔥</span>
-          <span>PYROGUARD</span>
+          <span>DRONEWATCH</span>
         </a>
         <ul className="hidden md:flex gap-6 text-sm">
           <li><a href="#servicios" className="text-slate-300 hover:text-orange-400 transition-colors">Servicios</a></li>

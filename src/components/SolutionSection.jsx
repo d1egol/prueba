@@ -133,7 +133,7 @@ const SolutionSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-bold text-red-400">Sin PyroGuard</h4>
+                <h4 className="text-lg font-bold text-red-400">Sin DroneWatch</h4>
               </div>
               <ul className="space-y-3 text-slate-300">
                 <li className="flex items-start gap-2">
@@ -163,7 +163,7 @@ const SolutionSection = () => {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                   </svg>
                 </div>
-                <h4 className="text-lg font-bold text-green-400">Con PyroGuard</h4>
+                <h4 className="text-lg font-bold text-green-400">Con DroneWatch</h4>
               </div>
               <ul className="space-y-3 text-slate-300">
                 <li className="flex items-start gap-2">

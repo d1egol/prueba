@@ -1,7 +1,7 @@
-# Estrategia de Marketing - PyroGuard Chile
+# Estrategia de Marketing - DroneWatch Chile
 
 ## Objetivo Principal
-Posicionar a PyroGuard como la solución líder en detección de incendios forestales con drones en Chile, generando leads cualificados para el equipo de ventas.
+Posicionar a DroneWatch como la solución líder en detección de incendios forestales con drones en Chile, generando leads cualificados para el equipo de ventas.
 
 ## Público Objetivo
 
@@ -29,7 +29,7 @@ Posicionar a PyroGuard como la solución líder en detección de incendios fores
 - Demos de detección térmica
 - Specs técnicos
 - Proceso de implementación
-- Antes/después con PyroGuard
+- Antes/después con DroneWatch
 
 ### 3. Credibilidad (20%)
 - Partner Dronivo (Alemania)
@@ -72,7 +72,7 @@ Posicionar a PyroGuard como la solución líder en detección de incendios fores
 ## Hashtags Principales
 
 ### Siempre usar:
-- #PyroGuard
+- #DroneWatch
 - #DetecciónDeIncendios
 - #DronesChile
 
@@ -91,10 +91,10 @@ Posicionar a PyroGuard como la solución líder en detección de incendios fores
 "Nuestro sistema detecta anomalías térmicas de 0.1°C, permitiendo identificar focos de incendio hasta 2 horas antes de que sean visibles."
 
 ### Instagram: Visual y emotivo
-"Cada minuto cuenta. Con PyroGuard, detectamos en menos de 5. 🔥🚁"
+"Cada minuto cuenta. Con DroneWatch, detectamos en menos de 5. 🔥🚁"
 
 ### Twitter: Directo y noticioso
-"ALERTA: 5,500 hectáreas quemadas en 2 horas. Con detección temprana, esto se puede evitar. #PyroGuard"
+"ALERTA: 5,500 hectáreas quemadas en 2 horas. Con detección temprana, esto se puede evitar. #DroneWatch"
 
 ### Facebook: Cercano y comunitario
 "Proteger los bosques de Chile es tarea de todos. Nosotros ponemos la tecnología, ¿nos ayudas a difundir? 🌲"
