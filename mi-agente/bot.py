@@ -522,13 +522,26 @@ def main():
     web_thread = threading.Thread(target=start_web_server, daemon=True)
     web_thread.start()
 
-    app = Application.builder().token(TELEGRAM_TOKEN).build()
-    _telegram_bot = app.bot
-
-    # Scheduler de tendencias (cada 6 horas)
+    # Scheduler — se inicia dentro del event loop via post_init
     scheduler = AsyncIOScheduler()
     scheduler.add_job(send_trend_update, "interval", hours=6)
-    scheduler.start()
+
+    async def post_init(application: Application) -> None:
+        global _telegram_bot
+        _telegram_bot = application.bot
+        scheduler.start()
+        logger.info("📅 Scheduler de tendencias iniciado.")
+
+    async def post_shutdown(application: Application) -> None:
+        scheduler.shutdown(wait=False)
+
+    app = (
+        Application.builder()
+        .token(TELEGRAM_TOKEN)
+        .post_init(post_init)
+        .post_shutdown(post_shutdown)
+        .build()
+    )
 
     app.add_handler(CommandHandler("start",  cmd_start))
     app.add_handler(CommandHandler("clear",  cmd_clear))
