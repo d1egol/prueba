@@ -1,8 +1,6 @@
 [build]
-builder = "nixpacks"
-buildCommand = "python3.11 -m pip install -r mi-agente/requirements.txt"
+builder = "dockerfile"
 
 [deploy]
-startCommand = "python3.11 mi-agente/bot.py"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 5
