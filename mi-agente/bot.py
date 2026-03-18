@@ -1,6 +1,6 @@
 """
 Mi Agente IA — Bot de Telegram
-Powered by Claude Opus 4.6 (Anthropic)
+Powered by Claude Sonnet 4.6 (Anthropic)
 """
 
 import os
@@ -127,7 +127,7 @@ async def run_agent(user_id: int, text: str, image_bytes: bytes | None = None) -
     # Loop agéntico (máx. 10 iteraciones por seguridad)
     for _ in range(10):
         response = await client.messages.create(
-            model="claude-opus-4-6",
+            model="claude-sonnet-4-6",
             max_tokens=4096,
             system=SYSTEM_PROMPT,
             tools=TOOLS,
