@@ -1,7 +1,7 @@
 providers = ["python"]
 
 [phases.setup]
-nixPkgs = ["python311", "python311Packages.pip"]
+nixPkgs = ["python311Full"]
 
 [phases.install]
 cmds = ["python3.11 -m pip install -r mi-agente/requirements.txt"]
