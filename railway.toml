@@ -1,8 +1,8 @@
 [build]
 builder = "nixpacks"
-buildCommand = "pip install -r mi-agente/requirements.txt"
+buildCommand = "python3.11 -m pip install -r mi-agente/requirements.txt"
 
 [deploy]
-startCommand = "python mi-agente/bot.py"
+startCommand = "python3.11 mi-agente/bot.py"
 restartPolicyType = "on_failure"
 restartPolicyMaxRetries = 5
