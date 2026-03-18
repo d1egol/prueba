@@ -1,0 +1,10 @@
+providers = ["python"]
+
+[phases.setup]
+nixPkgs = ["python311"]
+
+[phases.install]
+cmds = ["pip install -r mi-agente/requirements.txt"]
+
+[start]
+cmd = "python mi-agente/bot.py"

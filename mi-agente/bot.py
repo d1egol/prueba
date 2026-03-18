@@ -128,8 +128,7 @@ async def run_agent(user_id: int, text: str, image_bytes: bytes | None = None) -
     for _ in range(10):
         response = await client.messages.create(
             model="claude-opus-4-6",
-            max_tokens=16000,
-            thinking={"type": "enabled", "budget_tokens": 8000},
+            max_tokens=4096,
             system=SYSTEM_PROMPT,
             tools=TOOLS,
             messages=conversations[user_id],
