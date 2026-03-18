@@ -6,6 +6,7 @@ Powered by Claude (Anthropic) + python-telegram-bot
 import os
 import logging
 import base64
+import asyncio
 from typing import Optional
 from dotenv import load_dotenv
 
@@ -209,6 +210,19 @@ async def cmd_help(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await cmd_start(update, context)
 
 
+AGENT_TIMEOUT = int(os.getenv("AGENT_TIMEOUT", "120"))  # segundos
+
+
+async def keep_typing(chat, stop_event: asyncio.Event):
+    """Envía 'typing' cada 4 s hasta que stop_event se active."""
+    while not stop_event.is_set():
+        try:
+            await chat.send_action("typing")
+        except Exception:
+            pass
+        await asyncio.sleep(4)
+
+
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     user_id  = update.effective_user.id
     username = update.effective_user.first_name
@@ -216,8 +230,6 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if not is_allowed(user_id):
         await update.message.reply_text("⛔ No tienes acceso a este bot.")
         return
-
-    await update.message.chat.send_action("typing")
 
     text       = update.message.text or update.message.caption or ""
     image_data = None
@@ -231,8 +243,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
     logger.info(f"[{username}:{user_id}] {text[:80]}")
 
+    # Mantener "typing..." activo durante todo el procesamiento
+    stop_typing = asyncio.Event()
+    typing_task = asyncio.create_task(keep_typing(update.message.chat, stop_typing))
+
     try:
-        reply = await run_agent(user_id, text, image_data)
+        reply = await asyncio.wait_for(
+            run_agent(user_id, text, image_data),
+            timeout=AGENT_TIMEOUT,
+        )
 
         # Telegram limita mensajes a 4096 caracteres
         if len(reply) > 4096:
@@ -241,11 +260,20 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
         else:
             await update.message.reply_text(reply)
 
+    except asyncio.TimeoutError:
+        logger.warning(f"Timeout para usuario {user_id}")
+        await update.message.reply_text(
+            f"⏱️ La respuesta tardó más de {AGENT_TIMEOUT}s. "
+            "Intenta con una instrucción más corta o usa /clear para limpiar el historial."
+        )
     except Exception as e:
         logger.error(f"Error: {e}", exc_info=True)
         await update.message.reply_text(
             "❌ Hubo un error. Intenta de nuevo o usa /clear si el problema persiste."
         )
+    finally:
+        stop_typing.set()
+        typing_task.cancel()
 
 
 # ─── Inicio ────────────────────────────────────────────────────────────────────
